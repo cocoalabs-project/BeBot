@@ -1,6 +1,6 @@
 # BeBot
 
-`Be Bot` or `Бе Бот` - is a Telegram bot that sends an image in response to every message containing `бе` (Russian) or `be` (English)
+`Be Bot` or `Бе Бот` - is a Telegram bot that sends an image in response to every message containing `бе` (Russian) or `be` (English).
 Currently available only in Russian.
 Licensed under MIT.
 
