@@ -79,7 +79,6 @@
               environment = cfg.settings;
 
               serviceConfig = {
-                ExecStart = "${bebotPkg}/bin/bebot";
                 User = "bebot";
                 Group = "bebot";
                 Restart = "always";
