@@ -8,6 +8,8 @@ Official bot: https://t.me/FufubekBot
 
 ## Installing
 
+### Imperative
+
 1. Clone the repository:
 ```bash
 git clone https://codeberg.org/m1lkydev/BeBot
@@ -19,9 +21,15 @@ cd BeBot
 pip install aiogram aiohttp-socks python-dotenv
 ```
 
-3. Edit the settings in .env
+3. Rename .env.example to .env and edit the settings in that file
 
 4. Run the main.py:
 ```bash
 python3 ./main.py # or py .\main.py for Windows
 ```
+
+### Nix (Flakes)
+
+Add the `BeBot.url = "codeberg:m1lkydev/BeBot"` to inputs 
+and `inputs.BeBot.nixosModules.default` to modules of NixOS Configuration 
+in outputs
