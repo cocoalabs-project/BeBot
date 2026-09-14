@@ -27,9 +27,3 @@ pip install aiogram aiohttp-socks python-dotenv
 ```bash
 python3 ./main.py # or py .\main.py for Windows
 ```
-
-### Nix (Flakes)
-
-Add the `BeBot.url = "codeberg:m1lkydev/BeBot"` to inputs 
-and `inputs.BeBot.nixosModules.default` to modules of NixOS Configuration 
-in outputs
