@@ -10,7 +10,7 @@ Official bot: https://t.me/FufubekBot
 
 1. Clone the repository:
 ```bash
-git clone https://github.com/m1lkydev/BeBot
+git clone https://github.com/cocoalabs-project/BeBot
 cd BeBot
 ```
 
