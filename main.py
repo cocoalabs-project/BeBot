@@ -17,7 +17,8 @@ WORDS = config.get(
     "words",
     [
         {"word": "бе", "image_path": "{}", "caption": "{}"},
-        {"word": "be", "image_path": "{}", "caption": "{}"}
+        {"word": "be", "image_path": "{}", "caption": "{}"},
+        {"word": "бэ", "image_path": "{}", "caption": "{}"}
     ]
 )
 BOT_VERSION = "0.2.0"
