@@ -43,7 +43,7 @@
         let
           cfg = config.services.bebot;
           bebotPkg = self.packages.${pkgs.system}.bebot;
-          config = (pkgs.formats.json { }).generate "config.json" cfg.settings;
+          bebotConfig = (pkgs.formats.json { }).generate "config.json" cfg.settings;
         in
         {
           options.services.bebot = {
@@ -94,7 +94,7 @@
                 if [ -f "$CREDENTIALS_DIRECTORY/bot_token" ]; then
                   export BEBOT_TOKEN="$(cat "$CREDENTIALS_DIRECTORY/bot_token")"
                 fi
-                export BEBOT_CONFIG_PATH="${config}"
+                export BEBOT_CONFIG_PATH="${bebotConfig}"
                 exec ${bebotPkg}/bin/bebot
               '';
             };
