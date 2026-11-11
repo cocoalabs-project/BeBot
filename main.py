@@ -21,7 +21,7 @@ WORDS = config.get(
         {"word": "бэ", "image_path": "{}", "caption": "{}"}
     ]
 )
-BOT_VERSION = "0.2.0"
+BOT_VERSION = "0.2.1"
 
 bot = Bot(token=TOKEN)
 dp = Dispatcher()
