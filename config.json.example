@@ -1,0 +1,9 @@
+{
+  "global_image_path": "./be.jpg",
+  "global_caption": "",
+  "words": [
+    {"word": "бе", "image_path": "{}", "caption": "{}"},
+    {"word": "be", "image_path": "{}", "caption": "{}"},
+    {"word": "бэ", "image_path": "{}", "caption": "{}"}
+  ]
+}

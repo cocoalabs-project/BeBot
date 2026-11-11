@@ -1,6 +1,10 @@
-# BeBot
+# Be Bot
 
-`Be Bot` or `Бе Бот` - is a Telegram bot that sends an image in response to every message containing `бе` (Russian) or `be` (English).
+`Be Bot` or `Бе Бот` is a customizable Telegram bot 
+that sends a specific image in response to any message containing at least one of the words 
+specified in the settings. 
+The default configuration includes only `бе`, `be`, and `бэ`, all of which trigger the same image.
+
 Currently available only in Russian.
 Licensed under MIT.
 
@@ -14,14 +18,20 @@ git clone https://github.com/cocoalabs-project/BeBot
 cd BeBot
 ```
 
-2. Install the libraries:
+2. Install the library:
 ```bash
-pip install aiogram aiohttp-socks python-dotenv
+pip install aiogram
 ```
 
-3. Rename .env.example to .env and edit the settings in that file
+3. Rename `config.json.example` to `config.json` and edit the settings in that file
+(or leave it as is)
+
 
 4. Run the main.py:
 ```bash
-python3 ./main.py # or py .\main.py for Windows
+BEBOT_TOKEN="token" python3 ./main.py 
+# You can also use the `BEBOT_CONFIG_PATH` variable to specify the path to the configuration file
 ```
+
+**Please note that it is recommended to set up the bot as a service in your init system 
+(if using systemd, it is preferable to use systemd credentials to store the token in a separate file).**

@@ -17,14 +17,12 @@
           pkgs = pkgsFor system;
           pythonEnv = pkgs.python3.withPackages (ps: [
             ps.aiogram
-            ps.aiohttp-socks
-            ps.python-dotenv
           ]);
         in
         {
           bebot = pkgs.stdenv.mkDerivation {
             pname = "bebot";
-            version = "0.1.0";
+            version = "0.2.0";
             src = pkgs.lib.cleanSource ./.;
 
             nativeBuildInputs = [ pkgs.makeWrapper ];
@@ -45,6 +43,7 @@
         let
           cfg = config.services.bebot;
           bebotPkg = self.packages.${pkgs.system}.bebot;
+          config = (pkgs.formats.json { }).generate "config.json" cfg.settings;
         in
         {
           options.services.bebot = {
@@ -56,27 +55,26 @@
             };
 
             settings = lib.mkOption {
-              type = lib.types.attrsOf lib.types.str;
+              type = lib.types.attrs;
               default = { };
-              description = "Environment variables passed to the bot service.";
+              description = "Settings for the bot.";
             };
           };
 
           config = lib.mkIf cfg.enable {
-            users.users.bebot = {
-              isSystemUser = true;
-              group = "bebot";
-              description = "Be Bot service user";
+            users = {
+              users.bebot = {
+                isSystemUser = true;
+                group = "bebot";
+                description = "Be Bot service user";
+              };
+              groups.bebot = { };
             };
-
-            users.groups.bebot = { };
 
             systemd.services.bebot = {
               description = "Be Bot";
               after = [ "network.target" ];
               wantedBy = [ "multi-user.target" ];
-
-              environment = cfg.settings;
 
               serviceConfig = {
                 User = "bebot";
@@ -94,8 +92,9 @@
 
               script = ''
                 if [ -f "$CREDENTIALS_DIRECTORY/bot_token" ]; then
-                  export TOKEN="$(cat "$CREDENTIALS_DIRECTORY/bot_token")"
+                  export BEBOT_TOKEN="$(cat "$CREDENTIALS_DIRECTORY/bot_token")"
                 fi
+                export BEBOT_CONFIG_PATH="${config}"
                 exec ${bebotPkg}/bin/bebot
               '';
             };
