@@ -70,6 +70,8 @@ async def catch_all(message: Message):
                 FSInputFile(image_path),
                 caption=caption
             )
+            return # Update 0.3.0 will include a custom setting 
+                   # instead of a hard termination of the function
 
 async def main():
     await dp.start_polling(bot)
