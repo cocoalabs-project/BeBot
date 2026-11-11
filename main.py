@@ -21,12 +21,12 @@ WORDS = config.get(
         {"word": "бэ", "image_path": "{}", "caption": "{}"}
     ]
 )
-BOT_VERSION = "0.2.1"
+BOT_VERSION = "0.2.2"
 
 bot = Bot(token=TOKEN)
 dp = Dispatcher()
 
-async def get_readable_list_of_words(for_start: bool):
+async def get_readable_list_of_words(for_start: bool = False):
     list_ = ""
     for i, word in enumerate(WORDS):
         list_ += f"'{word["word"]}', "
@@ -34,6 +34,8 @@ async def get_readable_list_of_words(for_start: bool):
             list_ = list_[:-abs(6 + len(word["word"]))]
             if for_start:
                 list_ += f" или '{word["word"]}'"
+            else:
+                list_ += f", '{word["word"]}'"
     return list_
 
 @dp.message(Command("start"))
@@ -52,7 +54,7 @@ async def start_command(message: Message):
 
 @dp.message(Command("words"))
 async def words_command(message: Message):
-    message.reply(await get_readable_list_of_words())
+    await message.reply(await get_readable_list_of_words())
 
 @dp.message(~F.command)
 async def catch_all(message: Message):

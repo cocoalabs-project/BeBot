@@ -22,7 +22,7 @@
         {
           bebot = pkgs.stdenv.mkDerivation {
             pname = "bebot";
-            version = "0.2.1";
+            version = "0.2.2";
             src = pkgs.lib.cleanSource ./.;
 
             nativeBuildInputs = [ pkgs.makeWrapper ];
